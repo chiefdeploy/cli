@@ -25,3 +25,5 @@ jobs:
             release/chief-linux-amd64
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print SHA256 checksum
+        run: sha256sum release/chief-linux-amd64
