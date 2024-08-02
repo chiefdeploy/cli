@@ -221,7 +221,7 @@ func install() {
 	if automaticUpdates {
 		automaticUpdatesString = "Yes"
 
-		err := exec.Command("bash", "-c", "echo \"0 3 * * * root /usr/local/bin/chief update --cron\" > /etc/cron.d/chief_update").Run()
+		err := exec.Command("bash", "-c", "echo \"0,15,30 3 * * * root /usr/local/bin/chief update --cron >> /var/log/chief.log 2>&1\" > /etc/cron.d/chief_update").Run()
 		if err != nil {
 			fmt.Println(errorStyle.Render("Error setting up automatic updates. Please manually run 'chief update' as root to update Chief Controller."))
 			os.Exit(1)
