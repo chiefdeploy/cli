@@ -64,10 +64,6 @@ func updateFunction(cmd *cobra.Command) {
 	remote_cli_version := getCLIRemoteVersion()
 
 	if remote_cli_version != lib.GetCLIVersion() {
-		if !cmd.Flags().Changed("cron") {
-			fmt.Println(installStyle.Render("Chief CLI is out of date. Please run `chief update cli` to update Chief CLI.\n"))
-		}
-
 		lib.UpdateCLI("https://chief-install.s3.eu-central-1.amazonaws.com/chief-linux-amd64")
 		os.Exit(0)
 	}
